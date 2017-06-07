@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Nobele Awards</title>
+		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script type="text/javascript" src="script_pie.js"></script>
+		<script type="text/javascript" src="script_bubble.js"></script>
+		<script type="text/javascript" src="script_map2.js"></script>
+		<script type="text/javascript" src="script_country.js"></script>
+		<script type="text/javascript" src="script_timeline.js"></script>
+		<script type="text/javascript" src="script_bar.js"></script>
+	</head>
+
+<Style>
+	.header {
+		clear:both;
+	}
+	
+	.header_image{
+		float:left;
+	}
+	
+	.header_text{
+		float:left;
+		color:#EE8907; //#F9CA0A;
+		font-family: "algerian"; 
+		font-size: 80px;
+		vertical-align: middle;
+		text-indent: 50px;
+	}
+	
+	.title {
+		
+	}
+	
+	.h_line {
+			border-top: 5px solid #F9CA0A;
+	}
+	
+	.body{
+		clear:both;
+	}
+	
+	.country{
+		/*fill: #cccccc;*/
+		stroke: #333333;
+		stroke-width: 0.5;
+	}
+	
+	.highlight{
+		/*fill:#f2f2f2;*/
+	}
+	
+	div.tooltip {
+		position: absolute;
+		text-align: center;
+		width: 80px;
+		height: 50px;
+		padding: 2px;
+		font: 12px sans-serif;
+		background: lightsteelblue;
+		pointer-events: none;
+	}
+	
+	#chart, #map, #timeline, #detail{
+		border-style: solid;
+		border-color: #F9CA0A;
+		border-width: 5px;
+		border-radius: 15px 15px 15px;
+	}
+	
+	#intro {
+		color:#EE8907;
+		font-family: "Matura MT Script Capitals"; 
+		font-size: 16px;
+		border-size: 1px;
+	}
+</Style>
+	
+<body bgcolor = "#F8F7F4" onload = "country();">
+		
+	<div class= "header">
+		<div class = "header_image"><img src="images/Nobel_medal.png" 
+		height="150" width="150" />
+		</div>
+		
+		<div class = "header_text">
+			<font> <u>The Nobel Awards </u> </font> 
+			
+		</div>	
+		<div>
+		<hr width = 100% class ="h_line" >
+		<p id= "intro"> According to Nobel's will, the Peace Prize shall be awarded to the person who in the preceding year "shall have done the most or the best work for fraternity between nations, for the abolition or reduction of standing armies and for the holding and promotion of peace congresses" .Each year, the Norwegian Nobel Committee specifically invites qualified people to submit nominations for the Nobel Peace Prize. The statutes of the Nobel Foundation specify categories of individuals who are eligible to make nominations for the Nobel Peace Prize.The Chairman of the Norwegian Nobel Committee presents the Nobel Peace Prize in the presence of the King of Norway on 10th December each year (the anniversary of Nobel's death).
+		<hr width = 100% class ="h_line" >
+		</div>
+	</div>
+	
+	<div class = "body">
+	
+	<p> <b>Select Category: </b>
+		 <input type="radio" name="Category" id="sel_Category1" value="Chemistry" > Chemistry </input>
+		<input type="radio" name="Category" id="sel_Category2" value="Literature"> Literature </input>
+		<input type="radio" name="Category" id="sel_Category3" value="Medicine / Physiology"> Medicine / Physiology </input>
+		<input type="radio" name="Category" id="sel_Category4" value="Peace"> Peace </input>
+		<input type="radio" name="Category" id="sel_Category5" value="Physics"> Physics </input>
+		<input type="radio" name="Category" id="sel_Category6" value="Economics"> Economics </input>
+		
+		<input id="map2" type="button" value="Show Map" onClick = "map();"/>
+		<div id = "map" > </div>
+	
+		<p> <b>Select Continent: </b>
+		<select id="sel_continent">
+			<option value="Africa">Africa</option>
+			<option value="Asia">Asia</option>
+			<option value="Oceania">Oceania</option>
+			<option value="Europe">Europe</option>
+			<option value="North America">North America</option>
+			<option value="South America">South America</option>
+		</select>
+		
+		<input id="pie" type="button" value="Gender Wise" onClick = "pie();"/>
+		<input id="bubble" type="button" value="Country Wise" onClick = "bubble();"/>
+		<input id="bar" type="button" value="Category Wise" onClick = "bar();"/>
+		<div id = "chart" > </div>
+		
+		
+		<p> <b>Select Country: </b>
+		<select id="sel_country">	</select>
+		<input id="btimeline" type="button" value="Timeline Chart" onClick = "timeline();"/>
+		<div id = "timeline" > </div>
+		
+		<div id = "detail" > <p> <b><u>Details of Laureate: </u></b> </div>
+	</div>	
+		
+</body>
+</html>
